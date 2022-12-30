@@ -1,9 +1,6 @@
 package com.example.demo.model.service;
 
-import com.example.demo.model.entity.AddStudentInput;
-import com.example.demo.model.entity.AddStudentOutput;
-import com.example.demo.model.entity.GetAverageInput;
-import com.example.demo.model.entity.GetAverageOutput;
+import com.example.demo.model.entity.*;
 import com.example.demo.model.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +15,10 @@ private StudentRepository studentRepository=new StudentRepository();
         System.out.println(student.getName());
 
         return  studentRepository.doSave(student);
+    }
+    public GetStudentOutput getStudent(){
+return studentRepository.getStudent();
+
     }
     public GetAverageOutput getAverage(GetAverageInput getAverageInput){
         AddStudentInput student=studentRepository.getAverage(getAverageInput);

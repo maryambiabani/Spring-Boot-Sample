@@ -1,11 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.entity.AddStudentInput;
-import com.example.demo.model.entity.AddStudentOutput;
-import com.example.demo.model.entity.GetAverageInput;
-import com.example.demo.model.entity.GetAverageOutput;
+import com.example.demo.model.entity.*;
 import com.example.demo.model.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -26,7 +22,7 @@ public class RestApi {
     /**
      * Create a student with the system.This end point accepts student information in
      * the json format.It will create and send back the data to the REST student.
-     * @param addStudentInput
+     * @param
      * @return addStudentOutput
      */
 //    http://localhost:8081/api/addStudent
@@ -38,6 +34,14 @@ public class RestApi {
 //                "history":10
 //    }
 //    }
+
+
+    @GetMapping("/getStudent")
+    public ResponseEntity<GetStudentOutput> getSudent(){
+        final GetStudentOutput output=studentService.getStudent();
+        return new ResponseEntity< >(output, HttpStatus.CREATED);
+    }
+
     @PostMapping(value = "/addStudent")
     public ResponseEntity<AddStudentOutput> addStudent(@RequestBody AddStudentInput addStudentInput) {
 
